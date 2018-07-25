@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="css/navbarStyleSheet.css">
 <script type="text/javascript" src="javascript/navbarJS.js"></script>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-static-top">
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="#">Pestbusters</a>

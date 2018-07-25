@@ -4,7 +4,13 @@ include "dbConnection.php";
 include "sha256hash.php";
 
 $username = $_POST['username'];
-$password = hash('sha256',"password");
+
+
+$existQuery = "SELECT * FROM users WHERE user='$username'";
+$existResult = $conn->query($existQuery);
+$row = $existResult->fetch_assoc();
+
+$password = hashPassword("pestbusters", $row['verifCode']);
 
 $resetQuery = "UPDATE users SET password = '$password' WHERE user = '$username'";
 $conn->query($resetQuery);

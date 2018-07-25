@@ -63,7 +63,7 @@ $currentPage = "User Management";
                     <tbody>
                       <?php
                       $currentUser = $_SESSION['currentUser'];
-                        $adminUserQuery = "SELECT * FROM users WHERE accountType = 'superadmin' ";
+                        $adminUserQuery = "SELECT * FROM users WHERE accountType = 'superadmin' AND user != '$currentUser' ";
                         $adminResultQuery = $conn->query($adminUserQuery);
                         if ($adminResultQuery->num_rows>0) {
                             // output data of each row

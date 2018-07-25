@@ -1,8 +1,8 @@
 <?php
 include 'dbConnection.php';
+include 'sha256hash.php';
 
 $username = $_POST['user'];
-$password = hash('sha256',$_POST['password']);
 
 $query = "SELECT * FROM users WHERE user = '$username'" ;
 $result = $conn->query($query);
@@ -11,7 +11,7 @@ $result = $conn->query($query);
 if ($result->num_rows > 0) {
     // output data of each row
     while ($row = $result->fetch_assoc()) {
-        if($row['user'] == $username && $row['password'] == $password){
+        if($row['user'] == $username && $row['password'] == hashPassword($_POST['password'], $row['verifCode'])){
             //set the currentUser 
             $_SESSION['currentUser'] = $username;
             

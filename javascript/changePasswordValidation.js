@@ -16,11 +16,14 @@ function validateForm(){
     var newPassword = document.forms["changePasswordForm"]["newPassword"].value;
     var cPassword = document.forms["changePasswordForm"]["confirmPassword"].value;
     
+    var alphanumeric = new RegExp("[^a-zA-Z0-9]");
+    
     var flag = 0;
     document.getElementById("oldPasswordWarning").style.display = "none";
     document.getElementById("passwordWarning").style.display = "none";
     document.getElementById("cPasswordWarning").style.display = "none";
     document.getElementById("shortPasswordWarning").style.display = "none";
+    document.getElementById("specialCharPasswordWarning").style.display = "none";
     
     if(password == ""){
         document.getElementById("oldPasswordWarning").style.display = "block";
@@ -38,6 +41,11 @@ function validateForm(){
     if(cPassword != newPassword){
         document.getElementById("cPasswordWarning").style.display = "block";
         flag = 1;
+    }
+    
+    if(alphanumeric.test(newPassword)){
+        document.getElementById("specialCharPasswordWarning").style.display = "block";
+        flag=1;
     }
     
     if(flag==1){

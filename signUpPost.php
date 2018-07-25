@@ -3,8 +3,8 @@ include 'dbConnection.php';
 include 'sha256hash.php';
 
 $username = $_POST['user'];
-$password = hash('sha256',$_POST['password']);
-$verifCode = generateRandomString(15);
+//$password = hash('sha256',$_POST['password']);
+
 if(isset($_POST['privilege']) == "admin"){
     $accountType = "superadmin";
 }else{
@@ -18,6 +18,8 @@ if ($existResult->num_rows > 0){
     return false;
 }
 
+$verifCode = generateRandomString(15);
+$password = hashPassword($_POST['password'], $verifCode);
 
 $query = "INSERT INTO users (user, password, verifCode, accountType) VALUES ('$username','$password','$verifCode','$accountType')" ;
 $result = $conn->query($query);

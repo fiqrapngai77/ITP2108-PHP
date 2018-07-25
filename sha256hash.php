@@ -6,15 +6,8 @@
  * and open the template in the editor.
  */
 
-function hashPassword($password){
-    
-
-    for($x = 0; $x < 4; $x++){
-        $password = hash('sha256', $password + hash('sha256',$password.$x));
-    }
-    
-    
-    return $password;
+function hashPassword($password, $code){
+    return hash('sha256',$password.$code);
 }
 
 

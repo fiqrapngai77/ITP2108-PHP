@@ -6,6 +6,10 @@ if(!isset($_SESSION['currentUser'])){
     
 }
 
+if(isset($_GET['success'])){
+    $message = "The password entered does not match the one in the system";
+}
+
 $currentPage = "Change Password";
 
 ?>
@@ -36,34 +40,42 @@ $currentPage = "Change Password";
                 
                 <hr>
             </div>
-            
+                       
             <section>
                 <form action="changePasswordPost.php" method="post" onSubmit="return validateForm()" name="changePasswordForm">
                     <table>
+                        <tr>
+                            <td><small id="errorMessage"><?php if(isset($message)){echo $message;} ?></small></td>
+                        </tr>
+                        
                         <tr>
                             <td><strong>Username: </strong></td>
                             <td><?php echo $_SESSION['currentUser'] ?></td>
                         </tr>
                         
+                        
+                        
                         <tr>
                             <td><strong>Current Password: </strong></td>
                             <td><input type="password" class="form-control" name="currentPassword" id="currentPassword" placeholder="Current Password">
-                            <small id="oldPasswordWarning">* Please enter your current password</small></td>
+                            <small id="oldPasswordWarning" class="errorMsg">* Please enter your current password</small></td>
                             
                         </tr>
                         
                         <tr>
                             <td><strong>New Password: </strong></td>
                             <td><input type="password" class="form-control" name="newPassword" id="newPassword" placeholder="New Password">
-                            <small id="passwordWarning">* Please enter your desired password</small>
-                            <small id="shortPasswordWarning">* Please enter at least 8 characters</small></td>
+                            <small id="passwordWarning" class="errorMsg">* Please enter your desired password</small>
+                            <small id="shortPasswordWarning" class="errorMsg">* Please enter at least 8 characters</small>
+                            <small id="specialCharPasswordWarning" class="errorMsg">* Please enter alphanumeric characters only</small>
+                            </td>
                             
                         </tr>
                         
                         <tr>
                             <td><strong>Confirm New Password: </strong></td>
                             <td><input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="Confirm New Password">
-                            <small id="cPasswordWarning">* The password does not match</small></td>
+                            <small id="cPasswordWarning" class="errorMsg">* The password does not match</small></td>
                             
                         </tr>
                         

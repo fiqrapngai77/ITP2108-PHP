@@ -9,11 +9,14 @@ function validateForm(){
     var password = document.forms["signUpForm"]["password"].value;
     var cPassword = document.forms["signUpForm"]["cPassword"].value;
     
+    var alphanumeric = new RegExp("[^a-zA-Z0-9]");
+    
     var flag = 0;
     document.getElementById("usernameWarning").style.display = "none";
     document.getElementById("passwordWarning").style.display = "none";
     document.getElementById("cPasswordWarning").style.display = "none";
     document.getElementById("shortPasswordWarning").style.display = "none";
+    document.getElementById("specialCharPasswordWarning").style.display = "none";
     
     if(user == ""){
         document.getElementById("usernameWarning").style.display = "block";
@@ -23,10 +26,13 @@ function validateForm(){
     if(password == ""){
         document.getElementById("passwordWarning").style.display = "block";
         flag = 1;
-    } 
-    
-    if(password.length <8){
+    }else if(password.length <8){
         document.getElementById("shortPasswordWarning").style.display = "block";
+        flag=1;
+    }
+    
+    if(alphanumeric.test(password)){
+        document.getElementById("specialCharPasswordWarning").style.display = "block";
         flag=1;
     }
     

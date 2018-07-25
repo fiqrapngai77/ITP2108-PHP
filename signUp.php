@@ -49,7 +49,7 @@
                 <tr>
                   <td colspan="3">
                       <input type="text" class="form-control" name="user" id="username" placeholder="Username">
-                      <small id="usernameWarning">* Please enter your desired username</small>
+                      <small id="usernameWarning" class="errorMsg">* Please enter your desired username</small>
                       <br>
                   </td>
                 </tr>
@@ -58,8 +58,9 @@
                 <tr>
                   <td colspan="3">
                       <input type="password" class="form-control" name="password" id="password" placeholder="Password">
-                      <small id="passwordWarning">* Please enter your desired password</small>
-                      <small id="shortPasswordWarning">* Please enter at least 8 characters</small>
+                      <small id="passwordWarning" class="errorMsg">* Please enter your desired password</small>
+                      <small id="shortPasswordWarning" class="errorMsg">* Please enter at least 8 characters</small>
+                      <small id="specialCharPasswordWarning" class="errorMsg">* Please enter alphanumeric characters only</small>
                       <br>
                   </td>
                 </tr>
@@ -68,7 +69,7 @@
                 <tr>
                   <td colspan="3">
                       <input type="password" class="form-control" name="confirmPassword" id="cPassword" placeholder="Confirm Password">
-                      <small id="cPasswordWarning">* The password does not match</small>
+                      <small id="cPasswordWarning" class="errorMsg">* The password does not match</small>
                       <br>
                   </td>
                 </tr>
